@@ -16,7 +16,6 @@ Route::get('/contact', function () {
 
 
 
-
 //Config cache clear
 Route::get('clear', function () {
     Artisan::call('cache:clear');

@@ -24,12 +24,12 @@
                         <div class="hidden md:block">
                             <div class="ml-10 flex items-baseline space-x-4">
                                 <!-- Current: "bg-gray-900 text-white", Default: "text-gray-300 hover:bg-gray-700 hover:text-white" -->
-                                <a href="/" class="{{ request() }} rounded-md px-3 py-2 text-sm font-medium"
+                                <a href="/" class="{{ request()->is('/') ? 'bg-gray-900 text-white' : "text-gray-300 hover:bg-gray-700 hover:text-white" }} rounded-md px-3 py-2 text-sm font-medium"
                                     aria-current="page">Home</a>
                                 <a href="/about"
-                                    class="text-gray-300 hover:bg-gray-700 hover:text-white rounded-md px-3 py-2 text-sm font-medium">About</a>
+                                    class="{{ request()->is('about') ? 'bg-gray-900 text-white' : "text-gray-300 hover:bg-gray-700 hover:text-white" }} rounded-md px-3 py-2 text-sm font-medium">About</a>
                                 <a href="/contact"
-                                    class="text-gray-300 hover:bg-gray-700 hover:text-white rounded-md px-3 py-2 text-sm font-medium">Contact</a>
+                                    class="{{ request()->is('contact') ? 'bg-gray-900 text-white' : "text-gray-300 hover:bg-gray-700 hover:text-white" }} rounded-md px-3 py-2 text-sm font-medium">Contact</a>
                             </div>
                         </div>
                     </div>
@@ -37,7 +37,7 @@
                         <div class="ml-4 flex items-center md:ml-6">
                             <button type="button"
                                 class="relative rounded-full bg-gray-800 p-1 text-gray-400 hover:text-white focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-gray-800">
-                                <span class="absolute -inset-1.5"></span>
+                                <span class="absolute -inset-1.5"></span>~
                                 <span class="sr-only">View notifications</span>
                                 <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
                                     stroke="currentColor" aria-hidden="true">
