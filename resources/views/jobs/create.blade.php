@@ -21,6 +21,9 @@
                                        class="block flex-1 border-0 bg-transparent py-1.5 px-3 text-gray-900 placeholder:text-gray-400 focus:ring-0 sm:text-sm sm:leading-6"
                                        placeholder="Shift Leader">
                             </div>
+                            @if($errors->has('title'))
+                                <p class="text-red-500 text-sm mt-1">{{ $errors->first('title') }}</p>
+                            @endif
                         </div>
                     </div>
 
@@ -33,21 +36,24 @@
                                        class="block flex-1 border-0 bg-transparent py-1.5 px-3 text-gray-900 placeholder:text-gray-400 focus:ring-0 sm:text-sm sm:leading-6"
                                        placeholder="$50,000 Per Year">
                             </div>
+                            @if($errors->has('salary'))
+                                <p class="text-red-500 text-sm mt-1">{{ $errors->first('salary') }}</p>
+                            @endif
                         </div>
                     </div>
 
                 </div>
             </div>
 
-            <div class="mt-10">
-                @if($errors->any())
-                    <ul>
-                        @foreach($errors->all() as $error)
-                            <li class="text-red-500 italic">{{ $error }}</li>
-                        @endforeach
-                    </ul>
-                @endif
-            </div>
+{{--            <div class="mt-10">--}}
+{{--                @if($errors->any())--}}
+{{--                    <ul>--}}
+{{--                        @foreach($errors->all() as $error)--}}
+{{--                            <li class="text-red-500 italic">{{ $error }}</li>--}}
+{{--                        @endforeach--}}
+{{--                    </ul>--}}
+{{--                @endif--}}
+{{--            </div>--}}
         </div>
 
         <div class="mt-6 flex items-center justify-end gap-x-6">
