@@ -7,31 +7,30 @@ use Illuminate\Http\Request;
 
 class JobController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     */
     public function index()
     {
-        $jobs = Job::with('employer')->latest()->paginate(3);
-        return view('jobs.index', ['jobs' => $jobs]);
+        $jobs = Job::with('employer')->latest()->simplePaginate(3);
+
+        return view('jobs.index', [
+            'jobs' => $jobs
+        ]);
     }
 
-    /**
-     * Show the form for creating a new resource.
-     */
     public function create()
     {
         return view('jobs.create');
     }
 
-    /**
-     * Store a newly created resource in storage.
-     */
-    public function store(Request $request)
+    public function show(Job $job)
+    {
+        return view('jobs.show', ['job' => $job]);
+    }
+
+    public function store()
     {
         request()->validate([
             'title' => ['required', 'min:3'],
-            'salary' => ['required'],
+            'salary' => ['required']
         ]);
 
         Job::create([
@@ -43,33 +42,20 @@ class JobController extends Controller
         return redirect('/jobs');
     }
 
-    /**
-     * Display the specified resource.
-     */
-    public function show(Job $job)
-    {
-        return view('jobs.show', ['job' => $job]);
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     */
     public function edit(Job $job)
     {
         return view('jobs.edit', ['job' => $job]);
+
     }
 
-    /**
-     * Update the specified resource in storage.
-     */
-    public function update(Request $request, Job $job)
+    public function update(Job $job)
     {
+        // authorize (On hold...)
+
         request()->validate([
             'title' => ['required', 'min:3'],
-            'salary' => ['required'],
+            'salary' => ['required']
         ]);
-
-        // Authorize the request (On hold for now )
 
         $job->update([
             'title' => request('title'),
@@ -79,12 +65,12 @@ class JobController extends Controller
         return redirect('/jobs/' . $job->id);
     }
 
-    /**
-     * Remove the specified resource from storage.
-     */
     public function destroy(Job $job)
     {
+        // authorize (On hold...)
+
         $job->delete();
+
         return redirect('/jobs');
     }
 }
