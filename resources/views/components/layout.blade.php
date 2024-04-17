@@ -35,11 +35,11 @@
                             @endguest
 
                             @auth
-                                    <form method="POST" action="/logout">
-                                        @csrf
+                                <form method="POST" action="/logout">
+                                    @csrf
 
-                                        <x-form-button>Log Out</x-form-button>
-                                    </form>
+                                    <x-form-button>Log Out</x-form-button>
+                                </form>
                             @endauth
                         </div>
                     </div>
